@@ -18,9 +18,11 @@
   width: 90vw;
   background-color: #E1F0F6;
   border-radius: 20px;
+  background-size: 50px 50px;
+
   background-image:
-    linear-gradient(to right, #000000 5px, transparent 1px),
-    linear-gradient(to bottom, #000000 1px, transparent 1px);
+      linear-gradient(to right, #E5B6D4 1px, transparent 1px),
+      linear-gradient(to bottom, #E5B6D4 1px, transparent 1px);
 }
 
 body{
