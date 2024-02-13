@@ -5,6 +5,8 @@ import Character from "./components/Character";
 import Top from "./components/Top";
 import Arrow from "./components/Arrow";
 import Bottom from "./components/Bottom";
+import Hair from "./components/Hair";
+import hairImg from "./assets/hair1.png";
 import { useState } from "react";
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
   return (
     <>
       <div className="main">
+        <Hair imagePath={hairImg}></Hair>
         <Character imagePath={characterImg} />
         <Top imagePath={tops[currentTop]} />
         <Arrow
