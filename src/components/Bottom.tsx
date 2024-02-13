@@ -2,8 +2,10 @@ interface Props {
   imagePath: string;
 }
 
-const Top = ({ imagePath }: Props) => {
-  return <img src={imagePath} alt="top of our character" className="top"></img>;
+const Bottom = ({ imagePath }: Props) => {
+  return (
+    <img src={imagePath} alt="bottom of our character" className="bottom"></img>
+  );
 };
 
-export default Top;
+export default Bottom;
