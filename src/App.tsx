@@ -4,6 +4,7 @@ import "./App.css";
 import Character from "./components/Character";
 import Top from "./components/Top";
 import Arrow from "./components/Arrow";
+import Bottom from "./components/Bottom";
 import { useState } from "react";
 
 function App() {
@@ -12,6 +13,12 @@ function App() {
     "/src/assets/pinkshirt.png",
     "/src/assets/blueshirt.png",
     "/src/assets/greenshirt.png",
+  ];
+  const [currentBottom, changeCurrentBottom] = useState(0);
+  const bottoms = [
+    "/src/assets/pinkskirt.png",
+    "/src/assets/blueskirt.png",
+    "/src/assets/greenskirt.png",
   ];
   const handleChangeClothes = (
     event: React.MouseEvent,
@@ -55,6 +62,33 @@ function App() {
               currentTop,
               changeCurrentTop,
               tops
+            );
+          }}
+        />
+        <Bottom imagePath={bottoms[currentBottom]} />
+        <Arrow
+          className="arrow-bottom forward"
+          orientation="forward"
+          onClick={(event) => {
+            handleChangeClothes(
+              event,
+              "forward",
+              currentBottom,
+              changeCurrentBottom,
+              bottoms
+            );
+          }}
+        />
+        <Arrow
+          className="arrow-bottom back"
+          orientation="back"
+          onClick={(event) => {
+            handleChangeClothes(
+              event,
+              "back",
+              currentBottom,
+              changeCurrentBottom,
+              bottoms
             );
           }}
         />
