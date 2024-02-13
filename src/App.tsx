@@ -40,7 +40,7 @@ function App() {
         <Character imagePath={characterImg} />
         <Top imagePath={tops[currentTop]} />
         <Arrow
-          className="arrow-top forward"
+          className="arrow-div arrow-top forward"
           orientation="forward"
           onClick={(event) => {
             handleChangeClothes(
@@ -53,7 +53,7 @@ function App() {
           }}
         />
         <Arrow
-          className="arrow-top back"
+          className="arrow-div arrow-top back"
           orientation="back"
           onClick={(event) => {
             handleChangeClothes(
@@ -66,8 +66,9 @@ function App() {
           }}
         />
         <Bottom imagePath={bottoms[currentBottom]} />
+
         <Arrow
-          className="arrow-bottom forward"
+          className="arrow-div arrow-bottom forward"
           orientation="forward"
           onClick={(event) => {
             handleChangeClothes(
@@ -79,8 +80,9 @@ function App() {
             );
           }}
         />
+
         <Arrow
-          className="arrow-bottom back"
+          className="arrow-div arrow-bottom back"
           orientation="back"
           onClick={(event) => {
             handleChangeClothes(

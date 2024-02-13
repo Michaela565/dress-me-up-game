@@ -39,22 +39,24 @@
 
 .arrow-top{
   grid-row: 2/3;
+
+}
+
+.arrow-div{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
 }
 
 .arrow-bottom{
   grid-row: 3 / 4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .forward{
   grid-column: 4/5;
+  justify-content: flex-start;
 }
 
 .back{
   grid-column: 2/3;
+  justify-content: flex-end;
 }
