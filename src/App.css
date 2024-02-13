@@ -1,0 +1,53 @@
+#root {
+  text-align: center;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(3, 33.33%);
+  grid-template-rows: repeat(5, 20%);
+  width: 100%;
+  height: 100%;
+  justify-items: center;
+  align-items: center;
+}
+
+.character, .top {
+  width: auto;
+  height: 800px;
+  /* position: absolute; */
+  grid-column: 2/3;
+  grid-row: 1/6;
+}
+
+.character{
+  z-index: 0;
+}
+
+.top{
+  z-index: 2;
+}
+
+.bottom{
+  z-index: 1;
+}
+
+.forward, .back{
+  height: 6em;
+  color: white;
+}
+
+.arrow-top{
+  grid-row: 2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.forward{
+  grid-column: 3/4;
+}
+
+.back{
+  grid-column: 1/2;
+}
