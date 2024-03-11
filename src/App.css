@@ -12,6 +12,19 @@
   align-items: center;
 }
 
+.itemsNav{
+  background-color: #BFA2CB;
+  grid-row: 1/6;
+  grid-column: 1/2;
+  width: 90%;
+  height: 90%;
+  border-radius: 20px;
+  background-size: 50px 50px;
+  background-image:
+      linear-gradient(to right, #E5B6D4 1px, transparent 1px),
+      linear-gradient(to bottom, #E5B6D4 1px, transparent 1px);
+}
+
 .character, .top, .bottom, .hair {
   width: auto;
   height: 800px;

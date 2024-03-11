@@ -8,6 +8,7 @@ import Bottom from "./components/Bottom";
 import Hair from "./components/Hair";
 import hairImg from "./assets/hair1.png";
 import { useState } from "react";
+import ItemsNav from "./components/ItemsNav";
 
 function App() {
   const [currentTop, changeCurrentTop] = useState(0);
@@ -39,6 +40,7 @@ function App() {
   return (
     <>
       <div className="main">
+        <ItemsNav className="itemsNav"></ItemsNav>
         <Hair imagePath={hairImg}></Hair>
         <Character imagePath={characterImg} />
         <Top imagePath={tops[currentTop]} />
