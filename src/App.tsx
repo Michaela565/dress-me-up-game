@@ -9,6 +9,8 @@ import Hair from "./components/Hair";
 import hairImg from "./assets/hair1.png";
 import { useState } from "react";
 import ItemsNav from "./components/ItemsNav";
+import Stockings from "./components/Stockings";
+import ClothingItem from "./components/ClothingItem";
 
 function App() {
   const [currentTop, changeCurrentTop] = useState(0);
@@ -22,6 +24,13 @@ function App() {
     "/src/assets/pinkskirt.png",
     "/src/assets/blueskirt.png",
     "/src/assets/greenskirt.png",
+  ];
+  const [currentStockings, changeCurrentStockings] = useState(0);
+  const stockings = [
+    "/src/assets/stockingsblackopaque.png",
+    "/src/assets/stockingsblacksemitransparent.png",
+    "/src/assets/stockingswiththighhighsblack.png",
+    "/src/assets/thighhighsblack.png",
   ];
   const handleChangeClothes = (
     event: React.MouseEvent,
@@ -43,62 +52,24 @@ function App() {
         <ItemsNav className="itemsNav"></ItemsNav>
         <Hair imagePath={hairImg}></Hair>
         <Character imagePath={characterImg} />
-        <Top imagePath={tops[currentTop]} />
-        <Arrow
-          className="arrow-div arrow-top forward"
-          orientation="forward"
-          onClick={(event) => {
-            handleChangeClothes(
-              event,
-              "forward",
-              currentTop,
-              changeCurrentTop,
-              tops
-            );
-          }}
-        />
-        <Arrow
-          className="arrow-div arrow-top back"
-          orientation="back"
-          onClick={(event) => {
-            handleChangeClothes(
-              event,
-              "back",
-              currentTop,
-              changeCurrentTop,
-              tops
-            );
-          }}
-        />
-        <Bottom imagePath={bottoms[currentBottom]} />
-
-        <Arrow
-          className="arrow-div arrow-bottom forward"
-          orientation="forward"
-          onClick={(event) => {
-            handleChangeClothes(
-              event,
-              "forward",
-              currentBottom,
-              changeCurrentBottom,
-              bottoms
-            );
-          }}
-        />
-
-        <Arrow
-          className="arrow-div arrow-bottom back"
-          orientation="back"
-          onClick={(event) => {
-            handleChangeClothes(
-              event,
-              "back",
-              currentBottom,
-              changeCurrentBottom,
-              bottoms
-            );
-          }}
-        />
+        <ClothingItem
+          component="Top"
+          state={currentTop}
+          stateSetter={changeCurrentTop}
+          paths={tops}
+        ></ClothingItem>
+        <ClothingItem
+          component="Bottom"
+          state={currentBottom}
+          stateSetter={changeCurrentBottom}
+          paths={bottoms}
+        ></ClothingItem>
+        <ClothingItem
+          component="Stockings"
+          state={currentStockings}
+          stateSetter={changeCurrentStockings}
+          paths={stockings}
+        ></ClothingItem>
       </div>
     </>
   );
