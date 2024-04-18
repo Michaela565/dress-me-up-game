@@ -44,14 +44,14 @@ const ClothingItem = ({ state, stateSetter, paths, component }: Props) => {
     <>
       {pickComponent(component, paths, state)}
       <Arrow
-        className="arrow-div arrow-top forward" //TODO fix up the arrow-top to change dynamically to arrow-bottom and etc.
+        className={`arrow-div forward arrow-${component.toLowerCase()}`} //TODO fix up the arrow-top to change dynamically to arrow-bottom and etc.
         orientation="forward"
         onClick={(event) => {
           handleChangeClothes(event, "forward", state, stateSetter, paths);
         }}
       />
       <Arrow
-        className="arrow-div arrow-top back"
+        className={`arrow-div back arrow-${component.toLowerCase()}`}
         orientation="back"
         onClick={(event) => {
           handleChangeClothes(event, "back", state, stateSetter, paths);
