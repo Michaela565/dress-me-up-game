@@ -2,22 +2,27 @@ import characterImg from "./assets/character.png";
 // import topImg from "./assets/pinkshirt.png";
 import "./App.css";
 import Character from "./components/Character";
-import Top from "./components/Top";
-import Arrow from "./components/Arrow";
-import Bottom from "./components/Bottom";
 import Hair from "./components/Hair";
 import hairImg from "./assets/hair1.png";
 import { useState } from "react";
 import ItemsNav from "./components/ItemsNav";
-import Stockings from "./components/Stockings";
 import ClothingItem from "./components/ClothingItem";
 
 function App() {
   const [currentTop, changeCurrentTop] = useState(0);
+  // const tops = [
+  //   "/src/assets/pinkshirt.png",
+  //   "/src/assets/blueshirt.png",
+  //   "/src/assets/greenshirt.png",
+  // ];
   const tops = [
-    "/src/assets/pinkshirt.png",
-    "/src/assets/blueshirt.png",
-    "/src/assets/greenshirt.png",
+    "/clothes/1.png",
+    "/clothes/2.png",
+    "/clothes/3.png",
+    "/clothes/4.png",
+    "/clothes/5.png",
+    "/clothes/6.png",
+    "/clothes/7.png",
   ];
   const [currentBottom, changeCurrentBottom] = useState(0);
   const bottoms = [
