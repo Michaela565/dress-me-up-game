@@ -12,7 +12,6 @@ interface Props {
 }
 
 const handleChangeClothes = (
-  event: React.MouseEvent,
   orientation: string,
   state: number,
   stateSetter: React.Dispatch<React.SetStateAction<number>>,
@@ -44,17 +43,17 @@ const ClothingItem = ({ state, stateSetter, paths, component }: Props) => {
     <>
       {pickComponent(component, paths, state)}
       <Arrow
-        className={`arrow-div forward arrow-${component.toLowerCase()}`} //TODO fix up the arrow-top to change dynamically to arrow-bottom and etc.
+        className={`arrow-div forward arrow-${component.toLowerCase()}`}
         orientation="forward"
-        onClick={(event) => {
-          handleChangeClothes(event, "forward", state, stateSetter, paths);
+        onClick={() => {
+          handleChangeClothes("forward", state, stateSetter, paths);
         }}
       />
       <Arrow
         className={`arrow-div back arrow-${component.toLowerCase()}`}
         orientation="back"
-        onClick={(event) => {
-          handleChangeClothes(event, "back", state, stateSetter, paths);
+        onClick={() => {
+          handleChangeClothes("back", state, stateSetter, paths);
         }}
       />
     </>

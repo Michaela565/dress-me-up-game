@@ -37,19 +37,6 @@ function App() {
     "/src/assets/stockingswiththighhighsblack.png",
     "/src/assets/thighhighsblack.png",
   ];
-  const handleChangeClothes = (
-    event: React.MouseEvent,
-    orientation: string,
-    state: number,
-    stateSetter: React.Dispatch<React.SetStateAction<number>>,
-    clothesList: string[]
-  ) => {
-    if (orientation == "forward") {
-      stateSetter(state + 1 < clothesList.length ? state + 1 : 0);
-    } else {
-      stateSetter(state - 1 >= 0 ? state - 1 : clothesList.length - 1);
-    }
-  };
 
   return (
     <>
