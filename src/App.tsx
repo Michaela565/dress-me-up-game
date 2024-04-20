@@ -10,11 +10,6 @@ import ClothingItem from "./components/ClothingItem";
 
 function App() {
   const [currentTop, changeCurrentTop] = useState(0);
-  // const tops = [
-  //   "/src/assets/pinkshirt.png",
-  //   "/src/assets/blueshirt.png",
-  //   "/src/assets/greenshirt.png",
-  // ];
   const tops = [
     "/clothes/1.png",
     "/clothes/2.png",
