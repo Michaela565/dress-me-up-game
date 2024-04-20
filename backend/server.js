@@ -13,20 +13,28 @@ const db = mysql.createConnection({
     database: 'clothingapp'
 });
 
+db.connect((err) => {
+    if(err) console.log("Connection failed", err);
+    console.log("Connected to the database")
+});
+
 app.get('/', (req, res) => {
     return res.json("From backend side");
 });
 
-app.get('/clothing_item', (req, res) => {
-    const sql = "SELECT * FROM clothing_item";
-    db.query(sql, (err, res) => {
-        if(err) return res.json(err);
+app.get('/Clothing_item', (req, res) => {
+    
+    const sql = "SELECT * FROM Clothing_item";
+    db.query(sql, (err, data) => {
+        console.log(db.state)
+        if(err) throw err;
         return res.json(data);
     });
 });
 
 app.listen(8081, () => {
     console.log("listening");
+    console.log(db.state);
 });
 
 // 3306
