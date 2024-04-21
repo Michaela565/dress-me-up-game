@@ -1,26 +1,27 @@
 import characterImg from "./assets/character.png";
-// import topImg from "./assets/pinkshirt.png";
 import "./App.css";
 import Character from "./components/Character";
 import Hair from "./components/Hair";
 import hairImg from "./assets/hair1.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ItemsNav from "./components/ItemsNav";
 import ClothingItem from "./components/ClothingItem";
 
-const YOURPHOTOSPATH = '/clothes'; // HERE YOU SET THE PATH TO YOUR FOLDER WITH CLOTHES
+const YOURPHOTOSPATH = '/clothes/'; // HERE YOU SET THE PATH TO YOUR FOLDER WITH CLOTHES
 
 function App() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:8081/Clothing_item_imageURL')
+    .then(res => res.json())
+    .then(data => setData(data))
+    .catch(err => console.log(err))
+  }, []);
   const [currentTop, changeCurrentTop] = useState(0);
-  const tops = [
-    "/clothes/1.png",
-    "/clothes/2.png",
-    "/clothes/3.png",
-    "/clothes/4.png",
-    "/clothes/5.png",
-    "/clothes/6.png",
-    "/clothes/7.png",
-  ];
+  const tops = data.map((item : any) => {
+    return YOURPHOTOSPATH.concat(item.imageURL);
+  })
+  console.log(tops);
   const [currentBottom, changeCurrentBottom] = useState(0);
   const bottoms = [
     "/src/assets/pinkskirt.png",
@@ -35,6 +36,7 @@ function App() {
     "/src/assets/thighhighsblack.png",
   ];
 
+  
   return (
     <>
       <div className="main">
