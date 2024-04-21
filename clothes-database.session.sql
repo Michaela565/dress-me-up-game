@@ -65,3 +65,6 @@ ADD COLUMN tags VARCHAR(255);
 UPDATE Clothing_item
 SET imageURL = '7.png'
 WHERE id = 7;
+
+--@block
+SELECT * FROM Clothing_item;
