@@ -8,6 +8,8 @@ import { useState } from "react";
 import ItemsNav from "./components/ItemsNav";
 import ClothingItem from "./components/ClothingItem";
 
+const YOURPHOTOSPATH = '/clothes'; // HERE YOU SET THE PATH TO YOUR FOLDER WITH CLOTHES
+
 function App() {
   const [currentTop, changeCurrentTop] = useState(0);
   const tops = [

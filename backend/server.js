@@ -22,9 +22,9 @@ app.get('/', (req, res) => {
     return res.json("From backend side");
 });
 
-app.get('/Clothing_item', (req, res) => {
+app.get('/Clothing_item_imageURL', (req, res) => {
     
-    const sql = "SELECT * FROM Clothing_item";
+    const sql = "SELECT imageURL FROM Clothing_item";
     db.query(sql, (err, data) => {
         console.log(db.state)
         if(err) throw err;
