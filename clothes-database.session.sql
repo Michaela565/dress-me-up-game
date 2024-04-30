@@ -83,3 +83,17 @@ VALUES (
 
 --@block
 DELETE FROM Clothing_Item WHERE id=19;
+
+--@block
+INSERT INTO Clothing_Category (clothing_item_ID, category_ID)
+VALUES(
+    18,
+    2
+);
+
+--@block
+SELECT ci.*
+FROM Clothing_Item ci
+JOIN Clothing_Category cc ON ci.ID = cc.Clothing_Item_ID
+JOIN Category c ON cc.Category_ID = c.ID
+WHERE c.Name = 'bottom';
