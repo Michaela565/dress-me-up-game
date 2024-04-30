@@ -63,8 +63,23 @@ ADD COLUMN tags VARCHAR(255);
 
 --@block
 UPDATE Clothing_item
-SET imageURL = '7.png'
-WHERE id = 7;
+SET imageURL = '14.png'
+WHERE id = 14;
 
 --@block
 SELECT * FROM Clothing_item;
+
+--@block
+INSERT INTO Clothing_item (name, color, fit, length, type, imageURL, tags)
+VALUES (
+    'ruffleSkirtWithSuspenders',
+    'black',
+    'normal',
+    'medium',
+    'ruffle skirt suspenders',
+    '18.png',
+    'ruffle corset suspenders'
+);
+
+--@block
+DELETE FROM Clothing_Item WHERE id=19;
