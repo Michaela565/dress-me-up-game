@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dangrek&display=swap');
+
 #root {
   text-align: center;
 }
@@ -10,6 +12,7 @@
   height: 100%;
   justify-items: center;
   align-items: center;
+  
 }
 
 .itemsNav{
@@ -23,7 +26,42 @@
   background-image:
       linear-gradient(to right, #E5B6D4 1px, transparent 1px),
       linear-gradient(to bottom, #E5B6D4 1px, transparent 1px);
+  display: grid;
+  grid-template-rows: 10% repeat(5, 18%);
+  grid-template-columns: 5% repeat(4, 22.5%) 5%;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), inset 0px 8px 20px 5px #a789b4;
+
 }
+
+.add-new-item-btn{
+  grid-column: 2/6;
+  grid-row: 1/2;
+  margin: 1em;
+  padding: 0;
+  border: none;
+  border-radius: 20px;
+  background-color: #E5B6D4;
+  font-family: 'Dangrek';
+  font-size: 20px;
+  text-shadow: -1px -1px 0px #E5B6D4,
+    1px 1px 0px #E5B6D4,
+    2px 2px 3px #b681a2;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), inset 0px 8px 20px 5px #eed6e5;
+}
+
+button{
+  transition: all 0.2s;
+}
+
+button:hover{
+  transform: scale(1.1);
+}
+
+button:active{
+  transform: translateY(10px);
+  filter: opacity(80%);
+}
+
 
 .character, .top, .bottom, .hair, .stockings {
   width: auto;
