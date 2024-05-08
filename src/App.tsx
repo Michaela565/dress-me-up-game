@@ -8,26 +8,35 @@ import ItemsNav from "./components/ItemsNav";
 import ClothingItem from "./components/ClothingItem";
 
 const YOURPHOTOSPATH = '/clothes/'; // HERE YOU SET THE PATH TO YOUR FOLDER WITH CLOTHES
-
+// const categories = ["top", "bottom"]
 function App() {
-  const [data, setData] = useState([]);
+  const [tops, setTops] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:8081/Clothing_item_imageURL')
+    fetch('http://localhost:8081/clothes/top')
     .then(res => res.json())
-    .then(data => setData(data))
+    .then(data => setTops(data))
     .catch(err => console.log(err))
   }, []);
+
+
   const [currentTop, changeCurrentTop] = useState(0);
-  const tops = data.map((item : any) => {
+  const topsURL = tops.map((item : any) => {
     return YOURPHOTOSPATH.concat(item.imageURL);
   })
-  console.log(tops);
+
+  const [bottoms, setBottoms] = useState([])
+  useEffect(() => {
+    fetch('http://localhost:8081/clothes/bottom')
+    .then(res => res.json())
+    .then(data => setBottoms(data))
+    .catch(err => console.log(err))
+  }, []);
+
   const [currentBottom, changeCurrentBottom] = useState(0);
-  const bottoms = [
-    "/src/assets/pinkskirt.png",
-    "/src/assets/blueskirt.png",
-    "/src/assets/greenskirt.png",
-  ];
+  const bottomsURL = bottoms.map((item : any) => {
+    return YOURPHOTOSPATH.concat(item.imageURL);
+  })
+
   const [currentStockings, changeCurrentStockings] = useState(0);
   const stockings = [
     "/src/assets/stockingsblackopaque.png",
@@ -35,6 +44,25 @@ function App() {
     "/src/assets/stockingswiththighhighsblack.png",
     "/src/assets/thighhighsblack.png",
   ];
+
+  // categories.forEach(category => {
+  //   const [data, setData] = useState([]);
+  //   useEffect(() => {
+  //     fetch(`http://localhost:8081/clothes/${category}`)
+  //     .then(res => res.json())
+  //     .then(data => setData(data))
+  //     .catch(err => console.log(err))
+  //   }, []);
+  //   if (category == "top"){
+  //     setTops(data);
+  //   }
+  //   else if (category == "bottom"){
+  //     setBottoms(data)
+  //   }
+  //   else {
+  //     console.log(`Undefined category name ${category}`)
+  //   }
+  // });
 
   
   return (
@@ -47,13 +75,13 @@ function App() {
           component="Top"
           state={currentTop}
           stateSetter={changeCurrentTop}
-          paths={tops}
+          paths={topsURL}
         ></ClothingItem>
         <ClothingItem
           component="Bottom"
           state={currentBottom}
           stateSetter={changeCurrentBottom}
-          paths={bottoms}
+          paths={bottomsURL}
         ></ClothingItem>
         <ClothingItem
           component="Stockings"
