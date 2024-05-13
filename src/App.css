@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dangrek&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dangrek&display=swap");
 
 #root {
   text-align: center;
@@ -12,58 +12,56 @@
   height: 100%;
   justify-items: center;
   align-items: center;
-  
 }
 
-.itemsNav{
-  background-color: #BFA2CB;
+.itemsNav {
+  background-color: #bfa2cb;
   grid-row: 1/6;
   grid-column: 1/2;
   width: 90%;
   height: 90%;
   border-radius: 20px;
   background-size: 50px 50px;
-  background-image:
-      linear-gradient(to right, #E5B6D4 1px, transparent 1px),
-      linear-gradient(to bottom, #E5B6D4 1px, transparent 1px);
+  background-image: linear-gradient(to right, #e5b6d4 1px, transparent 1px),
+    linear-gradient(to bottom, #e5b6d4 1px, transparent 1px);
   display: grid;
   grid-template-rows: 10% repeat(5, 18%);
   grid-template-columns: 5% repeat(4, 22.5%) 5%;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), inset 0px 8px 20px 5px #a789b4;
-
 }
 
-.add-new-item-btn{
+.add-new-item-btn {
   grid-column: 2/6;
   grid-row: 1/2;
   margin: 1em;
   padding: 0;
   border: none;
   border-radius: 20px;
-  background-color: #E5B6D4;
-  font-family: 'Dangrek';
+  background-color: #e5b6d4;
+  font-family: "Dangrek";
   font-size: 20px;
-  text-shadow: -1px -1px 0px #E5B6D4,
-    1px 1px 0px #E5B6D4,
-    2px 2px 3px #b681a2;
+  text-shadow: -1px -1px 0px #e5b6d4, 1px 1px 0px #e5b6d4, 2px 2px 3px #b681a2;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), inset 0px 8px 20px 5px #eed6e5;
 }
 
-button{
+button {
   transition: all 0.2s;
 }
 
-button:hover{
+button:hover {
   transform: scale(1.1);
 }
 
-button:active{
+button:active {
   transform: translateY(10px);
   filter: opacity(80%);
 }
 
-
-.character, .top, .bottom, .hair, .stockings {
+.character,
+.top,
+.bottom,
+.hair,
+.stockings {
   width: auto;
   height: 800px;
   /* position: absolute; */
@@ -71,56 +69,98 @@ button:active{
   grid-row: 1/6;
 }
 
-.character{
+.character {
   z-index: 0;
 }
 
-.top{
+.top {
   z-index: 3;
 }
 
-.bottom{
+.bottom {
   z-index: 2;
 }
 
-.hair{
+.hair {
   z-index: 5;
 }
 
-.stockings{
+.stockings {
   z-index: 1;
 }
 
-.forward, .back{
+.forward,
+.back {
   height: 6em;
   color: white;
   z-index: 5;
 }
 
-.arrow-top{
+.arrow-top {
   grid-row: 2/3;
-
 }
 
-.arrow-div{
+.arrow-div {
   display: flex;
   width: 100%;
 }
 
-.arrow-bottom{
+.arrow-bottom {
   grid-row: 3 / 4;
 }
 
-.arrow-stockings{
+.arrow-stockings {
   grid-row: 4/5;
 }
 
-.forward{
+.forward {
   grid-column: 4/5;
   justify-content: flex-start;
 }
 
-.back{
+.back {
   grid-column: 2/3;
   justify-content: flex-end;
+}
+
+/* The Modal (background) */
+.popUp {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.popUpVisible {
+  display: block;
+}
+
+/* Modal Content/Box */
+.popUp-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

@@ -6,36 +6,38 @@ import hairImg from "./assets/hair1.png";
 import { useEffect, useState } from "react";
 import ItemsNav from "./components/ItemsNav";
 import ClothingItem from "./components/ClothingItem";
+import PopUp from "./components/PopUp";
 
-const YOURPHOTOSPATH = '/clothes/'; // HERE YOU SET THE PATH TO YOUR FOLDER WITH CLOTHES
+const YOURPHOTOSPATH = "/clothes/"; // HERE YOU SET THE PATH TO YOUR FOLDER WITH CLOTHES
 // const categories = ["top", "bottom"]
 function App() {
+  const [popUpVisibility, setPopUpVisibility] = useState(false);
+
   const [tops, setTops] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:8081/clothes/top')
-    .then(res => res.json())
-    .then(data => setTops(data))
-    .catch(err => console.log(err))
+    fetch("http://localhost:8081/clothes/top")
+      .then((res) => res.json())
+      .then((data) => setTops(data))
+      .catch((err) => console.log(err));
   }, []); // TODO test if useEffect runs more than once
 
-
   const [currentTop, changeCurrentTop] = useState(0);
-  const topsURL = tops.map((item : any) => {
+  const topsURL = tops.map((item: any) => {
     return YOURPHOTOSPATH.concat(item.imageURL);
-  })
+  });
 
-  const [bottoms, setBottoms] = useState([])
+  const [bottoms, setBottoms] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:8081/clothes/bottom')
-    .then(res => res.json())
-    .then(data => setBottoms(data))
-    .catch(err => console.log(err))
+    fetch("http://localhost:8081/clothes/bottom")
+      .then((res) => res.json())
+      .then((data) => setBottoms(data))
+      .catch((err) => console.log(err));
   }, []);
 
   const [currentBottom, changeCurrentBottom] = useState(0);
-  const bottomsURL = bottoms.map((item : any) => {
+  const bottomsURL = bottoms.map((item: any) => {
     return YOURPHOTOSPATH.concat(item.imageURL);
-  })
+  });
 
   const [currentStockings, changeCurrentStockings] = useState(0);
   const stockings = [
@@ -64,11 +66,18 @@ function App() {
   //   }
   // });
 
-  
   return (
     <>
       <div className="main">
-        <ItemsNav className="itemsNav"></ItemsNav>
+        <PopUp
+          className={popUpVisibility ? "popUp popUpVisible" : "popUp"}
+        ></PopUp>
+        <ItemsNav
+          className="itemsNav"
+          onClickNewItem={() => {
+            setPopUpVisibility(true);
+          }}
+        ></ItemsNav>
         <Hair imagePath={hairImg}></Hair>
         <Character imagePath={characterImg} />
         <ClothingItem
