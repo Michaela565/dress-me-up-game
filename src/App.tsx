@@ -71,6 +71,7 @@ function App() {
       <div className="main">
         <PopUp
           className={popUpVisibility ? "popUp popUpVisible" : "popUp"}
+          visibilitySetter={setPopUpVisibility}
         ></PopUp>
         <ItemsNav
           className="itemsNav"
