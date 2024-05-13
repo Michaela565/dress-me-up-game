@@ -16,7 +16,7 @@ function App() {
     .then(res => res.json())
     .then(data => setTops(data))
     .catch(err => console.log(err))
-  }, []);
+  }, []); // TODO test if useEffect runs more than once
 
 
   const [currentTop, changeCurrentTop] = useState(0);
