@@ -1,12 +1,22 @@
-import Select from "react-select";
-
 interface Props {
   className: string;
   visibilitySetter: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const PopUp = ({ className, visibilitySetter }: Props) => {
-  const categories = [{ value: "top", label: "Top" }];
+  type Category = {
+    value: string;
+    label: string;
+  };
+
+  const categories: Array<Category> = [
+    { value: "top", label: "Top" },
+    { value: "bottom", label: "Bottom" },
+    { value: "hair", label: "Hair" },
+    { value: "stockings", label: "Stockings" },
+    { value: "shoes", label: "Shoes" },
+  ];
+
   return (
     <div className={className}>
       <div className="popUp-content">
@@ -25,8 +35,12 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
               <input type="text" name="name" id="name" />
             </div>
             <div className="input-holder">
-              <label htmlFor="category">Name:</label>
-              <Select options={categories}></Select>
+              <label htmlFor="category">Category:</label>
+              <select name="category" id="category">
+                {categories.map((category) => (
+                  <option value={category.value}>{category.label}</option>
+                ))}
+              </select>
             </div>
           </fieldset>
         </form>
