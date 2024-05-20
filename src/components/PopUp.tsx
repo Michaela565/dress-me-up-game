@@ -23,6 +23,12 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
     { value: "thight", label: "Thight" },
   ];
 
+  const lengths: Array<Category> = [
+    { value: "long", label: "Long" },
+    { value: "normal", label: "Normal" },
+    { value: "short", label: "Short" },
+  ];
+
   return (
     <div className={className}>
       <div className="popUp-content">
@@ -59,6 +65,33 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
                   <option value={fit.value}>{fit.label}</option>
                 ))}
               </select>
+            </div>
+            <div className="input-holder">
+              <label htmlFor="length">Length:</label>
+              <select name="length" id="length">
+                {lengths.map((length) => (
+                  <option value={length.value}>{length.label}</option>
+                ))}
+              </select>
+            </div>
+            <div className="input-holder">
+              <label htmlFor="type:">Type:</label>
+              <input
+                type="text"
+                name="type"
+                id="type"
+                placeholder="oversized hoodie"
+              />
+            </div>
+            <div className="input-holder">
+              <label htmlFor="tags">Tags:</label>
+              <textarea name="tags" id="tags"></textarea>
+            </div>
+          </fieldset>
+          <fieldset>
+            <div className="input-holder">
+              <label htmlFor="picture">Picture:</label>
+              <input type="file" name="picture" id="picture" />
             </div>
           </fieldset>
         </form>
