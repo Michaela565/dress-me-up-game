@@ -17,6 +17,12 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
     { value: "shoes", label: "Shoes" },
   ];
 
+  const fits: Array<Category> = [
+    { value: "loose", label: "Loose" },
+    { value: "normal", label: "Normal" },
+    { value: "thight", label: "Thight" },
+  ];
+
   return (
     <div className={className}>
       <div className="popUp-content">
@@ -39,6 +45,18 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
               <select name="category" id="category">
                 {categories.map((category) => (
                   <option value={category.value}>{category.label}</option>
+                ))}
+              </select>
+            </div>
+            <div className="input-holder">
+              <label htmlFor="color">Color:</label>
+              <input type="text" name="color" id="color" />
+            </div>
+            <div className="input-holder">
+              <label htmlFor="fit">Fit:</label>
+              <select name="fit" id="fit">
+                {fits.map((fit) => (
+                  <option value={fit.value}>{fit.label}</option>
                 ))}
               </select>
             </div>
