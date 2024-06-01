@@ -90,8 +90,8 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
           </fieldset>
           <fieldset>
             <div className="input-holder">
-              <label htmlFor="picture">Picture:</label>
-              <input type="file" name="picture" id="picture" />
+              <label htmlFor="img-path">Image path:</label>
+              <input type="text" name="img-path" id="img-path" />
             </div>
           </fieldset>
         </form>
