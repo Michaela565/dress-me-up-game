@@ -29,6 +29,11 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
     { value: "short", label: "Short" },
   ];
 
+  function formHandler(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+  }
+
   return (
     <div className={className}>
       <div className="popUp-content">
@@ -40,7 +45,7 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
         >
           &times;
         </span>
-        <form action="">
+        <form onSubmit={formHandler}>
           <fieldset>
             <div className="input-holder">
               <label htmlFor="name">Name:</label>
@@ -90,7 +95,7 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
           </fieldset>
           <fieldset>
             <div className="input-holder">
-              <label htmlFor="img-path">Image path:</label>
+              <label htmlFor="img-path">Image file name:</label>
               <input type="text" name="img-path" id="img-path" />
             </div>
           </fieldset>
