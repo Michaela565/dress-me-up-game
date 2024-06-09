@@ -98,6 +98,9 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
               <label htmlFor="img-path">Image file name:</label>
               <input type="text" name="img-path" id="img-path" />
             </div>
+            <div className="input-holder">
+              <button type="submit">Upload</button>
+            </div>
           </fieldset>
         </form>
         <p>Some text in the Modal..</p>
