@@ -32,6 +32,26 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
   function formHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      category: formData.get("category"),
+      color: formData.get("color"),
+      fit: formData.get("fit"),
+      length: formData.get("length"),
+      type: formData.get("type"),
+      tags: formData.get("tags"),
+      imgPath: formData.get("img-path"),
+    };
+    console.log(JSON.stringify(data));
+    try {
+      const response = fetch("http://localhost:8081/upload-clothing-item", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+      });
+    } catch (error) {
+      alert(`An error occured : ${error}`);
+    }
   }
 
   return (
@@ -55,7 +75,9 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
               <label htmlFor="category">Category:</label>
               <select name="category" id="category">
                 {categories.map((category) => (
-                  <option value={category.value}>{category.label}</option>
+                  <option value={category.value} key={category.value}>
+                    {category.label}
+                  </option>
                 ))}
               </select>
             </div>
@@ -67,7 +89,9 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
               <label htmlFor="fit">Fit:</label>
               <select name="fit" id="fit">
                 {fits.map((fit) => (
-                  <option value={fit.value}>{fit.label}</option>
+                  <option value={fit.value} key={fit.value}>
+                    {fit.label}
+                  </option>
                 ))}
               </select>
             </div>
@@ -75,12 +99,14 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
               <label htmlFor="length">Length:</label>
               <select name="length" id="length">
                 {lengths.map((length) => (
-                  <option value={length.value}>{length.label}</option>
+                  <option value={length.value} key={length.value}>
+                    {length.label}
+                  </option>
                 ))}
               </select>
             </div>
             <div className="input-holder">
-              <label htmlFor="type:">Type:</label>
+              <label htmlFor="type">Type:</label>
               <input
                 type="text"
                 name="type"

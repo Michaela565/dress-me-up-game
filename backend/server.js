@@ -4,6 +4,7 @@ const cors = require("cors");
 const connection = require("./connection.json");
 
 const app = express();
+app.use(express.json());
 app.use(cors());
 
 catgerories = ["top", "bottom"];
@@ -36,6 +37,11 @@ app.get(`/clothes/:title`, (req, res) => {
   if (!found) {
     return res.json(`The category ${req.params.title} doesn't exist.`);
   }
+});
+
+app.post("/upload-clothing-item", (req, res) => {
+  // post processing to be added
+  console.log(req.body);
 });
 
 app.listen(8081, () => {
