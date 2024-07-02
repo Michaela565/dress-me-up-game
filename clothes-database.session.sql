@@ -97,3 +97,6 @@ FROM Clothing_Item ci
 JOIN Clothing_Category cc ON ci.ID = cc.Clothing_Item_ID
 JOIN Category c ON cc.Category_ID = c.ID
 WHERE c.Name = 'top';
+
+--@block
+SELECT MAX(id) AS lastid FROM clothing_item;

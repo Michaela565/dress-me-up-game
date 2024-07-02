@@ -26,6 +26,7 @@ app.get(`/clothes/:title`, (req, res) => {
     console.log(category);
     if (category == req.params.title) {
       found = true;
+      // Selects the whole row that fits the criteria, the app itself then selects which column it needs to use
       const sql = `SELECT ci.* FROM Clothing_Item ci JOIN Clothing_Category cc ON ci.ID = cc.Clothing_Item_ID JOIN Category c ON cc.Category_ID = c.ID WHERE c.Name = '${req.params.title}'`;
       db.query(sql, (err, data) => {
         console.log(db.state);
@@ -52,7 +53,13 @@ app.post("/upload-clothing-item", (req, res) => {
     data.tags &&
     data.imgPath
   ) {
-    const sql_last_used_id = "SELECT MAX(id) FROM clothing_item";
+    let last_used_id;
+    const sql_last_used_id = "SELECT MAX(id) AS lastid FROM clothing_item";
+    db.query(sql_last_used_id, (err, data) => {
+      if (err) throw err;
+      last_used_id = data[0].lastid;
+    });
+
     const sql_new_ci = `INSERT INTO Clothing_Item (name, color, fit, length, type, imageURL, tags) VALUES ('${data.name}', '${data.color}', '${data.fit}', '${data.length}', '${data.type}', '${data.imgPath}',  '${data.tags}')`;
     const sql_put_into_c = `INSERT INTO Clothing_Category (clothing_item_ID, category_ID) VALUES ()`;
   } else {
