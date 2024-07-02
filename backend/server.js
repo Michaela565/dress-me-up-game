@@ -61,7 +61,9 @@ app.post("/upload-clothing-item", (req, res) => {
     });
 
     const sql_new_ci = `INSERT INTO Clothing_Item (name, color, fit, length, type, imageURL, tags) VALUES ('${data.name}', '${data.color}', '${data.fit}', '${data.length}', '${data.type}', '${data.imgPath}',  '${data.tags}')`;
-    const sql_put_into_c = `INSERT INTO Clothing_Category (clothing_item_ID, category_ID) VALUES ()`;
+    const sql_put_into_c = `INSERT INTO Clothing_Category (clothing_item_ID, category_ID) VALUES (${
+      last_used_id + 1
+    })`;
   } else {
     res.status(400).send("Invalid data");
   }
