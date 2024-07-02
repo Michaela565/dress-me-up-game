@@ -40,8 +40,27 @@ app.get(`/clothes/:title`, (req, res) => {
 });
 
 app.post("/upload-clothing-item", (req, res) => {
+  const data = req.body;
+
+  if (
+    data.name &&
+    data.category &&
+    data.color &&
+    data.fit &&
+    data.length &&
+    data.type &&
+    data.tags &&
+    data.imgPath
+  ) {
+    const sql_last_used_id = "SELECT MAX(id) FROM clothing_item";
+    const sql_new_ci = `INSERT INTO Clothing_Item (name, color, fit, length, type, imageURL, tags) VALUES ('${data.name}', '${data.color}', '${data.fit}', '${data.length}', '${data.type}', '${data.imgPath}',  '${data.tags}')`;
+    const sql_put_into_c = `INSERT INTO Clothing_Category (clothing_item_ID, category_ID) VALUES ()`;
+  } else {
+    res.status(400).send("Invalid data");
+  }
   // post processing to be added
   console.log(req.body);
+  console.log(req.body.name);
 });
 
 app.listen(8081, () => {
