@@ -1,6 +1,7 @@
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
+const util = require("util");
 const connection = require("./connection.json");
 
 const app = express();
@@ -16,6 +17,8 @@ db.connect((err) => {
   console.log("Connected to the database");
 });
 
+const query = util.promisify(db.query).bind(db);
+
 app.get("/", (req, res) => {
   return res.json("From backend side");
 });
@@ -23,7 +26,7 @@ app.get("/", (req, res) => {
 app.get(`/clothes/:title`, (req, res) => {
   let found = false;
   catgerories.forEach((category) => {
-    console.log(category);
+    // console.log(category);
     if (category == req.params.title) {
       found = true;
       // Selects the whole row that fits the criteria, the app itself then selects which column it needs to use
@@ -39,6 +42,16 @@ app.get(`/clothes/:title`, (req, res) => {
     return res.json(`The category ${req.params.title} doesn't exist.`);
   }
 });
+
+const get_last_used_id = async () => {
+  try {
+    const sql_last_used_id = "SELECT MAX(id) AS lastid FROM clothing_item";
+    const maxID = await query(sql_last_used_id);
+    return maxID[0].lastid;
+  } catch (err) {
+    throw err;
+  }
+};
 
 app.post("/upload-clothing-item", (req, res) => {
   const data = req.body;
@@ -58,12 +71,13 @@ app.post("/upload-clothing-item", (req, res) => {
     db.query(sql_last_used_id, (err, data) => {
       if (err) throw err;
       last_used_id = data[0].lastid;
+      console.log(last_used_id);
     });
-
     const sql_new_ci = `INSERT INTO Clothing_Item (name, color, fit, length, type, imageURL, tags) VALUES ('${data.name}', '${data.color}', '${data.fit}', '${data.length}', '${data.type}', '${data.imgPath}',  '${data.tags}')`;
     const sql_put_into_c = `INSERT INTO Clothing_Category (clothing_item_ID, category_ID) VALUES (${
       last_used_id + 1
     })`;
+    console.log(sql_put_into_c);
   } else {
     res.status(400).send("Invalid data");
   }
