@@ -69,9 +69,10 @@ app.post("/upload-clothing-item", async (req, res) => {
     const last_used_id = await get_last_used_id();
     console.log(last_used_id);
     const sql_new_ci = `INSERT INTO Clothing_Item (name, color, fit, length, type, imageURL, tags) VALUES ('${data.name}', '${data.color}', '${data.fit}', '${data.length}', '${data.type}', '${data.imgPath}',  '${data.tags}')`;
+    console.log(sql_new_ci);
     const sql_put_into_c = `INSERT INTO Clothing_Category (clothing_item_ID, category_ID) VALUES (${
       last_used_id + 1
-    })`;
+    }, ${data.category})`;
     console.log(sql_put_into_c);
   } else {
     res.status(400).send("Invalid data");

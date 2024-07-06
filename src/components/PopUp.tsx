@@ -10,11 +10,11 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
   };
 
   const categories: Array<Category> = [
-    { value: "top", label: "Top" },
-    { value: "bottom", label: "Bottom" },
-    { value: "hair", label: "Hair" },
-    { value: "stockings", label: "Stockings" },
-    { value: "shoes", label: "Shoes" },
+    { value: "1", label: "Top" },
+    { value: "2", label: "Bottom" },
+    { value: "3", label: "Hair" },
+    { value: "4", label: "Stockings" },
+    { value: "5", label: "Shoes" },
   ];
 
   const fits: Array<Category> = [
