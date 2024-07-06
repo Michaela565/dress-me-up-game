@@ -66,18 +66,20 @@ app.post("/upload-clothing-item", async (req, res) => {
     data.tags &&
     data.imgPath
   ) {
-    const last_used_id = await get_last_used_id();
-    console.log(last_used_id);
-    const sql_new_ci = `INSERT INTO Clothing_Item (name, color, fit, length, type, imageURL, tags) VALUES ('${data.name}', '${data.color}', '${data.fit}', '${data.length}', '${data.type}', '${data.imgPath}',  '${data.tags}')`;
-    console.log(sql_new_ci);
-    const sql_put_into_c = `INSERT INTO Clothing_Category (clothing_item_ID, category_ID) VALUES (${
-      last_used_id + 1
-    }, ${data.category})`;
-    console.log(sql_put_into_c);
+    try {
+      const sql_new_ci = `INSERT INTO Clothing_Item (name, color, fit, length, type, imageURL, tags) VALUES ('${data.name}', '${data.color}', '${data.fit}', '${data.length}', '${data.type}', '${data.imgPath}',  '${data.tags}')`;
+      await query(sql_new_ci);
+      const last_used_id = await get_last_used_id();
+      const sql_put_into_c = `INSERT INTO Clothing_Category (clothing_item_ID, category_ID) VALUES (${last_used_id}, ${data.category})`;
+      await query(sql_put_into_c);
+      res.status(201).send("Clothing item uploaded successfully");
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Database operation failed");
+    }
   } else {
     res.status(400).send("Invalid data");
   }
-  // post processing to be added
   console.log(req.body);
   console.log(req.body.name);
 });
