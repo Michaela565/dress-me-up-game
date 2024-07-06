@@ -53,7 +53,7 @@ const get_last_used_id = async () => {
   }
 };
 
-app.post("/upload-clothing-item", (req, res) => {
+app.post("/upload-clothing-item", async (req, res) => {
   const data = req.body;
 
   if (
@@ -66,13 +66,8 @@ app.post("/upload-clothing-item", (req, res) => {
     data.tags &&
     data.imgPath
   ) {
-    let last_used_id;
-    const sql_last_used_id = "SELECT MAX(id) AS lastid FROM clothing_item";
-    db.query(sql_last_used_id, (err, data) => {
-      if (err) throw err;
-      last_used_id = data[0].lastid;
-      console.log(last_used_id);
-    });
+    const last_used_id = await get_last_used_id();
+    console.log(last_used_id);
     const sql_new_ci = `INSERT INTO Clothing_Item (name, color, fit, length, type, imageURL, tags) VALUES ('${data.name}', '${data.color}', '${data.fit}', '${data.length}', '${data.type}', '${data.imgPath}',  '${data.tags}')`;
     const sql_put_into_c = `INSERT INTO Clothing_Category (clothing_item_ID, category_ID) VALUES (${
       last_used_id + 1
