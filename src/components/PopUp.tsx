@@ -65,8 +65,8 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
         >
           &times;
         </span>
-        <form onSubmit={formHandler}>
-          <fieldset>
+        <form onSubmit={formHandler} className="upload-form">
+          <fieldset className="main-inputs">
             <div className="input-holder">
               <label htmlFor="name">Name:</label>
               <input type="text" name="name" id="name" />
@@ -119,7 +119,7 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
               <textarea name="tags" id="tags"></textarea>
             </div>
           </fieldset>
-          <fieldset>
+          <fieldset className="img-input">
             <div className="input-holder">
               <label htmlFor="img-path">Image file name:</label>
               <input type="text" name="img-path" id="img-path" />
@@ -137,7 +137,6 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
             </div>
           </fieldset>
         </form>
-        <p>Some text in the Modal..</p>
       </div>
     </div>
   );
