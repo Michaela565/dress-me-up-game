@@ -31,7 +31,7 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
 
   function formHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+    let formData = new FormData(event.currentTarget);
     const data = {
       name: formData.get("name"),
       category: formData.get("category"),
@@ -125,7 +125,15 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
               <input type="text" name="img-path" id="img-path" />
             </div>
             <div className="input-holder">
-              <button type="submit">Upload</button>
+              <button
+                type="submit"
+                onClick={() => {
+                  visibilitySetter(false);
+                  location.reload();
+                }}
+              >
+                Upload
+              </button>
             </div>
           </fieldset>
         </form>
