@@ -24,20 +24,24 @@ app.get("/", (req, res) => {
   return res.json("From backend side");
 });
 
-app.get(`/clothes/:title`, (req, res) => {
+app.get(`/clothes/:title`, async (req, res) => {
   let found = false;
   catgerories.forEach((category) => {
     if (category == req.params.title) {
       found = true;
-      // Selects the whole row that fits the criteria, the app itself then selects which column it needs to use
-      const sql = `SELECT ci.* FROM Clothing_Item ci JOIN Clothing_Category cc ON ci.ID = cc.Clothing_Item_ID JOIN Category c ON cc.Category_ID = c.ID WHERE c.Name = '${req.params.title}'`;
-      db.query(sql, (err, data) => {
-        if (err) throw err;
-        return res.json(data);
-      });
     }
   });
-  if (!found) {
+  if (found) {
+    try {
+      // Selects the whole row that fits the criteria, the app itself then selects which column it needs to use
+      const sql = `SELECT ci.* FROM Clothing_Item ci JOIN Clothing_Category cc ON ci.ID = cc.Clothing_Item_ID JOIN Category c ON cc.Category_ID = c.ID WHERE c.Name = '${req.params.title}'`;
+      const data = await query(sql);
+      return res.json(data);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Database query failed" });
+    }
+  } else {
     return res.json(`The category ${req.params.title} doesn't exist.`);
   }
 });
