@@ -17,6 +17,7 @@ db.connect((err) => {
   console.log("Connected to the database");
 });
 
+// Promisify the query for easy async use
 const query = util.promisify(db.query).bind(db);
 
 app.get("/", (req, res) => {
@@ -26,13 +27,11 @@ app.get("/", (req, res) => {
 app.get(`/clothes/:title`, (req, res) => {
   let found = false;
   catgerories.forEach((category) => {
-    // console.log(category);
     if (category == req.params.title) {
       found = true;
       // Selects the whole row that fits the criteria, the app itself then selects which column it needs to use
       const sql = `SELECT ci.* FROM Clothing_Item ci JOIN Clothing_Category cc ON ci.ID = cc.Clothing_Item_ID JOIN Category c ON cc.Category_ID = c.ID WHERE c.Name = '${req.params.title}'`;
       db.query(sql, (err, data) => {
-        console.log(db.state);
         if (err) throw err;
         return res.json(data);
       });
@@ -55,7 +54,7 @@ const get_last_used_id = async () => {
 
 app.post("/upload-clothing-item", async (req, res) => {
   const data = req.body;
-
+  // checks the data validity
   if (
     data.name &&
     data.category &&
@@ -67,6 +66,7 @@ app.post("/upload-clothing-item", async (req, res) => {
     data.imgPath
   ) {
     try {
+      // Inserts new c
       const sql_new_ci = `INSERT INTO Clothing_Item (name, color, fit, length, type, imageURL, tags) VALUES ('${data.name}', '${data.color}', '${data.fit}', '${data.length}', '${data.type}', '${data.imgPath}',  '${data.tags}')`;
       await query(sql_new_ci);
       const last_used_id = await get_last_used_id();
