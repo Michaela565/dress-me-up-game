@@ -25,13 +25,13 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
 
   const lengths: Array<Category> = [
     { value: "long", label: "Long" },
-    { value: "normal", label: "Normal" },
+    { value: "medium", label: "Medium" },
     { value: "short", label: "Short" },
   ];
 
   function formHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    let formData = new FormData(event.currentTarget);
+    const formData = new FormData(event.currentTarget);
     const data = {
       name: formData.get("name"),
       category: formData.get("category"),
@@ -44,6 +44,7 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
     };
     console.log(JSON.stringify(data));
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const response = fetch("http://localhost:8081/upload-clothing-item", {
         method: "POST",
         body: JSON.stringify(data),
@@ -129,7 +130,7 @@ const PopUp = ({ className, visibilitySetter }: Props) => {
                 type="submit"
                 onClick={() => {
                   visibilitySetter(false);
-                  location.reload();
+                  window.location.reload();
                 }}
               >
                 Upload
