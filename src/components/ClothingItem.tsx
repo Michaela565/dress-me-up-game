@@ -5,7 +5,7 @@ import Hair from "./Hair";
 import Stockings from "./Stockings";
 
 interface Props {
-  component: "Bottom" | "Top" | "Hair" | "Stockings";
+  component: "Bottom" | "Top" | "Hair" | "Stockings" | "LayerTop";
   state: number;
   stateSetter: React.Dispatch<React.SetStateAction<number>>;
   paths: string[];
@@ -31,7 +31,8 @@ const pickComponent = (
 ) => {
   if (componentName == "Bottom")
     return <Bottom imagePath={paths[state]}></Bottom>;
-  else if (componentName == "Top") return <Top imagePath={paths[state]}></Top>;
+  else if (componentName == "Top" || componentName == "LayerTop")
+    return <Top imagePath={paths[state]}></Top>;
   else if (componentName == "Stockings")
     return <Stockings imagePath={paths[state]}></Stockings>;
   else if (componentName == "Hair")

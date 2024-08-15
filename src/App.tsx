@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import characterImg from "./assets/character.png";
 import "./App.css";
 import Character from "./components/Character";
@@ -22,9 +23,12 @@ function App() {
   }, []); // TODO test if useEffect runs more than once
 
   const [currentTop, changeCurrentTop] = useState(0);
+
   const topsURL = tops.map((item: any) => {
     return YOURPHOTOSPATH.concat(item.imageURL);
   });
+
+  const [currentLayerTop, changeCurrentLayerTop] = useState(0);
 
   const [bottoms, setBottoms] = useState([]);
   useEffect(() => {
@@ -81,6 +85,12 @@ function App() {
         ></ItemsNav>
         <Hair imagePath={hairImg}></Hair>
         <Character imagePath={characterImg} />
+        <ClothingItem
+          component="LayerTop"
+          state={currentLayerTop}
+          stateSetter={changeCurrentLayerTop}
+          paths={topsURL}
+        ></ClothingItem>
         <ClothingItem
           component="Top"
           state={currentTop}
