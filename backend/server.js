@@ -75,7 +75,13 @@ app.post("/upload-clothing-item", async (req, res) => {
   ) {
     try {
       // Inserts new c
-      const sql_new_ci = `INSERT INTO Clothing_Item (name, color, fit, length, type, imageURL, tags) VALUES ('${data.name}', '${data.color}', '${data.fit}', '${data.length}', '${data.type}', '${data.imgPath}',  '${data.tags}')`;
+      const sql_new_ci = `INSERT INTO Clothing_Item (name, color, fit, length, type, imageURL, tags) VALUES (${mysql.escape(
+        data.name
+      )}, ${mysql.escape(data.color)}, ${mysql.escape(
+        data.fit
+      )}, ${mysql.escape(data.length)}, ${mysql.escape(
+        data.type
+      )}, ${mysql.escape(data.imgPath)},  ${mysql.escape(data.tags)})`;
       await query(sql_new_ci);
       const last_used_id = await get_last_used_id();
       const sql_put_into_c = `INSERT INTO Clothing_Category (clothing_item_ID, category_ID) VALUES (${last_used_id}, ${data.category})`;
