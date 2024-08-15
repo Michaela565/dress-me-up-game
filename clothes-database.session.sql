@@ -99,6 +99,11 @@ VALUES(
 );
 
 --@block
+UPDATE clothing_item
+SET imageURL = 'blacklongtanktopbasic.png'
+WHERE id = 29;
+
+--@block
 SELECT ci.*
 FROM Clothing_Item ci
 JOIN Clothing_Category cc ON ci.ID = cc.Clothing_Item_ID
