@@ -6,7 +6,7 @@
 
 .main {
   display: grid;
-  grid-template-columns: 50% 12.5% 25% 12.5%;
+  grid-template-columns: 50% 6.25% 6.25% 25% 6.25% 6.25%;
   grid-template-rows: repeat(5, 20%);
   width: 100%;
   height: 100%;
@@ -65,7 +65,7 @@ button:active {
   width: auto;
   height: 800px;
   /* position: absolute; */
-  grid-column: 3/4;
+  grid-column: 4/5;
   grid-row: 1/6;
 }
 
@@ -96,7 +96,8 @@ button:active {
   z-index: 5;
 }
 
-.arrow-top {
+.arrow-top,
+.arrow-layertop {
   grid-row: 2/3;
 }
 
@@ -113,13 +114,21 @@ button:active {
   grid-row: 4/5;
 }
 
+.forward.arrow-layertop {
+  grid-column: 6/7 !important;
+}
+
+.back.arrow-layertop {
+  grid-column: 2/3 !important;
+}
+
 .forward {
-  grid-column: 4/5;
+  grid-column: 5/6;
   justify-content: flex-start;
 }
 
 .back {
-  grid-column: 2/3;
+  grid-column: 3/4;
   justify-content: flex-end;
 }
 
