@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
@@ -8,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-catgerories = ["top", "bottom"];
+const catgerories = ["top", "bottom"];
 
 const db = mysql.createConnection(connection);
 
@@ -47,6 +50,7 @@ app.get(`/clothes/:title`, async (req, res) => {
 });
 
 const get_last_used_id = async () => {
+  // eslint-disable-next-line no-useless-catch
   try {
     const sql_last_used_id = "SELECT MAX(id) AS lastid FROM clothing_item";
     const maxID = await query(sql_last_used_id);

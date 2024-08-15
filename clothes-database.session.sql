@@ -82,7 +82,14 @@ VALUES (
 );
 
 --@block
-DELETE FROM Clothing_Item WHERE id=19;
+DELETE FROM Clothing_Item WHERE id=21;
+DELETE FROM Clothing_Item WHERE id=22;
+DELETE FROM Clothing_Item WHERE id=23;
+DELETE FROM Clothing_Item WHERE id=24;
+DELETE FROM Clothing_Item WHERE id=25;
+
+--@block
+DELETE FROM Clothing_Category WHERE category_ID=3;
 
 --@block
 INSERT INTO Clothing_Category (clothing_item_ID, category_ID)
