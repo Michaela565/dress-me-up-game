@@ -114,11 +114,11 @@ button:active {
   grid-row: 4/5;
 }
 
-.forward.arrow-layertop {
+.forward.arrow-top {
   grid-column: 6/7 !important;
 }
 
-.back.arrow-layertop {
+.back.arrow-top {
   grid-column: 2/3 !important;
 }
 
