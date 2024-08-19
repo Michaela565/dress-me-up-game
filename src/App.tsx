@@ -49,6 +49,10 @@ function App() {
     "/src/assets/stockingsblacksemitransparent.png",
     "/src/assets/stockingswiththighhighsblack.png",
     "/src/assets/thighhighsblack.png",
+    "/src/assets/stockingsblackopaque.png",
+    "/src/assets/stockingsblacksemitransparent.png",
+    "/src/assets/stockingswiththighhighsblack.png",
+    "/src/assets/thighhighsblack.png",
   ];
 
   // categories.forEach(category => {
@@ -82,6 +86,7 @@ function App() {
           onClickNewItem={() => {
             setPopUpVisibility(true);
           }}
+          imagePathsAccessories={stockings}
         ></ItemsNav>
         <Hair imagePath={hairImg}></Hair>
         <Character imagePath={characterImg} />
