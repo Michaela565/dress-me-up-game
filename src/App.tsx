@@ -43,8 +43,25 @@ function App() {
     return YOURPHOTOSPATH.concat(item.imageURL);
   });
 
+  const [currentAccessories, changeCurrentAccessories] = useState(0);
   const [currentStockings, changeCurrentStockings] = useState(0);
   const stockings = [
+    "/src/assets/stockingsblackopaque.png",
+    "/src/assets/stockingsblacksemitransparent.png",
+    "/src/assets/stockingswiththighhighsblack.png",
+    "/src/assets/thighhighsblack.png",
+    "/src/assets/stockingsblackopaque.png",
+    "/src/assets/stockingsblacksemitransparent.png",
+    "/src/assets/stockingswiththighhighsblack.png",
+    "/src/assets/thighhighsblack.png",
+    "/src/assets/stockingsblackopaque.png",
+    "/src/assets/stockingsblacksemitransparent.png",
+    "/src/assets/stockingswiththighhighsblack.png",
+    "/src/assets/thighhighsblack.png",
+    "/src/assets/stockingsblackopaque.png",
+    "/src/assets/stockingsblacksemitransparent.png",
+    "/src/assets/stockingswiththighhighsblack.png",
+    "/src/assets/thighhighsblack.png",
     "/src/assets/stockingsblackopaque.png",
     "/src/assets/stockingsblacksemitransparent.png",
     "/src/assets/stockingswiththighhighsblack.png",
@@ -87,6 +104,8 @@ function App() {
             setPopUpVisibility(true);
           }}
           imagePathsAccessories={stockings}
+          accessoriesState={currentAccessories}
+          accessoriesStateSetter={changeCurrentAccessories}
         ></ItemsNav>
         <Hair imagePath={hairImg}></Hair>
         <Character imagePath={characterImg} />

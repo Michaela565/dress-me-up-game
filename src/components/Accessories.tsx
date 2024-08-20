@@ -3,28 +3,31 @@ import Accessory from "./Accessory";
 interface Props {
   className: string;
   imagePaths: string[];
+  startingIndex: number;
 }
 
-const Accessories = ({ className, imagePaths }: Props) => {
+const Accessories = ({ className, imagePaths, startingIndex }: Props) => {
   return (
     <>
       {imagePaths.length <= 9
         ? imagePaths.map((path, index) => {
             return (
               <Accessory
-                className={className + index}
+                className={className + index + startingIndex * 9}
                 imagePath={path}
               ></Accessory>
             );
           })
-        : imagePaths.slice(0, 8).map((path, index) => {
-            return (
-              <Accessory
-                className={className + index}
-                imagePath={path}
-              ></Accessory>
-            );
-          })}
+        : imagePaths
+            .slice(0 + startingIndex * 9, 8 + startingIndex * 9)
+            .map((path, index) => {
+              return (
+                <Accessory
+                  className={className + index + startingIndex * 9}
+                  imagePath={path}
+                ></Accessory>
+              );
+            })}
     </>
   );
 };
