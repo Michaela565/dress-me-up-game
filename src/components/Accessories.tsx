@@ -13,17 +13,17 @@ const Accessories = ({ className, imagePaths, startingIndex }: Props) => {
         ? imagePaths.map((path, index) => {
             return (
               <Accessory
-                className={className + index + startingIndex * 9}
+                className={className + index}
                 imagePath={path}
               ></Accessory>
             );
           })
         : imagePaths
-            .slice(0 + startingIndex * 9, 8 + startingIndex * 9)
+            .slice(0 + startingIndex * 9, 9 + startingIndex * 9)
             .map((path, index) => {
               return (
                 <Accessory
-                  className={className + index + startingIndex * 9}
+                  className={className + index}
                   imagePath={path}
                 ></Accessory>
               );
