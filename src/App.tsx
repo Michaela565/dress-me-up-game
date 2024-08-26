@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import ItemsNav from "./components/ItemsNav";
 import ClothingItem from "./components/ClothingItem";
 import PopUp from "./components/PopUp";
+import DragAndDropItem from "./components/DragAndDropItem";
 
 const YOURPHOTOSPATH = "/clothes/"; // HERE YOU SET THE PATH TO YOUR FOLDER WITH CLOTHES
 // const categories = ["top", "bottom"]
@@ -93,6 +94,7 @@ function App() {
 
   return (
     <>
+      <DragAndDropItem imagePath="/src/assets/thighhighsblack.png"></DragAndDropItem>
       <div className="main">
         <PopUp
           className={popUpVisibility ? "popUp popUpVisible" : "popUp"}

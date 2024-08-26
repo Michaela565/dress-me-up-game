@@ -1,9 +1,16 @@
+import DragAndDropItem from "./DragAndDropItem";
+
 interface Props {
   className: string;
   imagePath: string;
 }
 
 const Accessory = ({ className, imagePath }: Props) => {
+  const onClick = () => {
+    console.log("clicked");
+    return <DragAndDropItem imagePath={imagePath}></DragAndDropItem>;
+  };
+
   return (
     <img
       className={className}
@@ -11,6 +18,7 @@ const Accessory = ({ className, imagePath }: Props) => {
       alt="accessory"
       width="100"
       height="100"
+      onClick={onClick}
     ></img>
   );
 };
