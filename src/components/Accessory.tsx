@@ -1,16 +1,20 @@
-import DragAndDropItem from "./DragAndDropItem";
-
 interface Props {
   className: string;
   imagePath: string;
+  addAccessory: React.Dispatch<React.SetStateAction<string[]>>;
+  spawnedAccessories: string[];
 }
 
-const Accessory = ({ className, imagePath }: Props) => {
-  const onClick = () => {
+const Accessory = ({
+  className,
+  imagePath,
+  addAccessory,
+  spawnedAccessories,
+}: Props) => {
+  const onClickSpawn = () => {
     console.log("clicked");
-    return <DragAndDropItem imagePath={imagePath}></DragAndDropItem>;
+    addAccessory([...spawnedAccessories, imagePath]);
   };
-
   return (
     <img
       className={className}
@@ -18,7 +22,7 @@ const Accessory = ({ className, imagePath }: Props) => {
       alt="accessory"
       width="100"
       height="100"
-      onClick={onClick}
+      onClick={onClickSpawn}
     ></img>
   );
 };

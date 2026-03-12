@@ -4,9 +4,17 @@ interface Props {
   className: string;
   imagePaths: string[];
   startingIndex: number;
+  addAccessory: React.Dispatch<React.SetStateAction<string[]>>;
+  spawnedAccessories: string[];
 }
 
-const Accessories = ({ className, imagePaths, startingIndex }: Props) => {
+const Accessories = ({
+  className,
+  imagePaths,
+  startingIndex,
+  addAccessory,
+  spawnedAccessories,
+}: Props) => {
   return (
     <>
       {imagePaths.length <= 9
@@ -15,6 +23,8 @@ const Accessories = ({ className, imagePaths, startingIndex }: Props) => {
               <Accessory
                 className={className + index}
                 imagePath={path}
+                addAccessory={addAccessory}
+                spawnedAccessories={spawnedAccessories}
               ></Accessory>
             );
           })
@@ -25,6 +35,8 @@ const Accessories = ({ className, imagePaths, startingIndex }: Props) => {
                 <Accessory
                   className={className + index}
                   imagePath={path}
+                  addAccessory={addAccessory}
+                  spawnedAccessories={spawnedAccessories}
                 ></Accessory>
               );
             })}

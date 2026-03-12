@@ -7,6 +7,8 @@ interface Props {
   imagePathsAccessories: string[];
   accessoriesState: number;
   accessoriesStateSetter: React.Dispatch<React.SetStateAction<number>>;
+  addAccessory: React.Dispatch<React.SetStateAction<string[]>>;
+  spawnedAccessories: string[];
 }
 
 const handleChangeToNext = (
@@ -32,6 +34,8 @@ const ItemsNav = ({
   imagePathsAccessories,
   accessoriesState,
   accessoriesStateSetter,
+  addAccessory,
+  spawnedAccessories,
 }: Props) => {
   return (
     <div className={className}>
@@ -54,6 +58,8 @@ const ItemsNav = ({
         className="accessories"
         imagePaths={imagePathsAccessories}
         startingIndex={accessoriesState}
+        addAccessory={addAccessory}
+        spawnedAccessories={spawnedAccessories}
       />
       <Arrow
         className={`arrow-div back arrow-accessories`}

@@ -73,6 +73,8 @@ function App() {
     "/src/assets/thighhighsblack.png",
   ];
 
+  const [spawnedAccessories, changeSpawnedAccessories] = useState<string[]>([]);
+
   // categories.forEach(category => {
   //   const [data, setData] = useState([]);
   //   useEffect(() => {
@@ -94,7 +96,10 @@ function App() {
 
   return (
     <>
-      <DragAndDropItem imagePath="/src/assets/thighhighsblack.png"></DragAndDropItem>
+      {spawnedAccessories.map((path) => {
+        return <DragAndDropItem imagePath={path}></DragAndDropItem>;
+      })}
+      {/* <DragAndDropItem imagePath="/src/assets/thighhighsblack.png"></DragAndDropItem> */}
       <div className="main">
         <PopUp
           className={popUpVisibility ? "popUp popUpVisible" : "popUp"}
@@ -108,6 +113,8 @@ function App() {
           imagePathsAccessories={stockings}
           accessoriesState={currentAccessories}
           accessoriesStateSetter={changeCurrentAccessories}
+          addAccessory={changeSpawnedAccessories}
+          spawnedAccessories={spawnedAccessories}
         ></ItemsNav>
         <Hair imagePath={hairImg}></Hair>
         <Character imagePath={characterImg} />
